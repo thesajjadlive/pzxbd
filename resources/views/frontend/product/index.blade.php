@@ -1,7 +1,7 @@
 @extends('layouts.front.master')
 
 @section('content')
-        <div class="banner banner-cat" style="background-image: url({{ asset('assets/frontend/images/banners/banner-top.jpg') }});">
+        <div class="banner banner-cat" style="background-image: url({{ asset('assets/frontend/images/banners/btn.jpg') }});">
             <div class="banner-content container">
                 <h2 class="banner-subtitle">check out over <span>200+</span></h2>
                 <h1 class="banner-title">

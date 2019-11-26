@@ -23,6 +23,7 @@ Route::get('product/{id}','Front\ProductController@details')->name('product.deta
 Route::get('products/{id?}','Front\ProductController@index')->name('front.product.index');
 Route::get('brand/{id?}','Front\ProductController@brand')->name('front.product.brand');
 Route::get('search','Front\ProductController@find')->name('front.product.find');
+Route::post('subscribe','SubscribeController@store')->name('subscribe');
 
 
 
@@ -41,6 +42,16 @@ Route::get('checkout','Front\CheckoutController@index')->name('checkout');
 Route::get('ajax/add-to-cart/{product_id}','Front\AjaxController@addToCart')->name('ajax.addToCart');
 Route::get('remove-cart/{product_id}','Front\AjaxController@delete')->name('remove.cart');
 Route::post('update-cart/{product_id}','Front\AjaxController@update')->name('update.cart');
+
+
+//about and contact route
+Route::get('about', function () {
+    return view('frontend.about');
+});
+Route::get('contact', function () {
+    return view('frontend.contact');
+});
+
 
 
 
