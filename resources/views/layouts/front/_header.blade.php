@@ -9,9 +9,14 @@
                 <a href="#">Links</a>
                 <div class="header-menu">
                     <ul>
-                        <li><a href="my-account.html">MY ACCOUNT </a></li>
+                        <li><a href="{{ route('user.view') }}">MY ACCOUNT </a></li>
                         <li><a href="{{ url('contact') }}">Contact</a></li>
-                        <li><a href="#" class="login-link">LOG IN</a></li>
+                        @if(Auth::guard('customer')->user())
+                            <li><a href="{{ route('user.logout') }}">SIGN OUT</a></li>
+                        @else
+                            <li><a href="{{ route('user.register') }}">SIGN UP</a></li>
+                            <li><a href="{{ route('user.login') }}">SIGN IN</a></li>
+                        @endif
                     </ul>
                 </div><!-- End .header-menu -->
             </div><!-- End .header-dropown -->

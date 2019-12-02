@@ -104,6 +104,7 @@ class UserController extends Controller
             'email' => 'required|email',
             'password' => 'confirmed'
         ]);
+
         $user_req = $request->except('_token','password');
 
 

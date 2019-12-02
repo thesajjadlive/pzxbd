@@ -22,6 +22,8 @@ class CheckoutController extends Controller
         $data['order'] = Order::findOrFail($order_id);
         $data['cart'] = session('cart');
 
+        session()->remove('cart');
+        session()->flash('message','Order has been placed successfully');
         return view('frontend.checkout.payment',$data);
     }
 }

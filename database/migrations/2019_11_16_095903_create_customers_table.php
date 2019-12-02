@@ -19,12 +19,12 @@ class CreateCustomersTable extends Migration
             $table->string('last_name');
             $table->string('phone');
             $table->string('email');
-            $table->string('password')->nullable();
+            $table->string('password');
             $table->string('company')->nullable();
             $table->string('street_address');
             $table->string('district');
             $table->string('zip');
-            $table->enum('account_status',['guest','registered']);
+            $table->enum('account_status',['active','inactive']);
             $table->enum('status',['active','inactive']);
             $table->timestamps();
         });

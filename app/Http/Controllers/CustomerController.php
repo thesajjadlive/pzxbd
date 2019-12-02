@@ -8,6 +8,7 @@ use App\Order;
 use App\OrderDetail;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -29,9 +30,26 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:customers'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'phone' => 'required',
+            'street_address' => 'required',
+            'district' => 'required',
+            'zip' => 'required',
+        ]);
+
+        //customer store
+        $data = $request->except('_token','password');
+        $data['password'] = bcrypt($request->password);
+        Customer::create($data);
+
+        session()->flash('message','Thank you for your registration.');
+        return redirect()->route('home');
     }
 
     /**
@@ -42,26 +60,13 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-         $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'street_address' => 'required',
-            'district' => 'required',
-            'zip' => 'required',
-        ]);
-
-
 
 
          //Transaction start
          DB::beginTransaction();
          try {
 
-             //customer store
-             $data = $request->except('_token', 'shipping-method');
-             $customer_id = Customer::insertGetId($data);
+             $customer_id = $customer_id = Auth::guard('customer')->user()->id;
 
 
              //order store
@@ -131,9 +136,18 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
+    public function view()
+    {
+        $id = Auth::guard('customer')->user()->id;
+        $data['customer'] = Customer::findOrFail($id);
+        return view('customer.index',$data);
+    }
+
     public function show(Customer $customer)
     {
-        //
+        $id = Auth::guard('customer')->user()->id;
+        $data['customer'] = $customer->findOrFail($id);
+        return view('customer.info',$data);
     }
 
     /**
@@ -142,9 +156,10 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit($id)
     {
-        //
+        $data['customer'] = Customer::findOrFail($id);
+        return view('customer.edit',$data);
     }
 
     /**
@@ -154,9 +169,33 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request, $id)
     {
-        //
+        $customer = Customer::findOrFail($id) ;
+
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email',
+            'password' => 'confirmed',
+            'phone' => 'required',
+            'street_address' => 'required',
+            'district' => 'required',
+            'zip' => 'required'
+        ]);
+
+        //customer update
+        $data = $request->except('_token','password');
+
+        if ($request->password)
+        {
+            $data['password'] = bcrypt($request->password);
+        }
+
+        $customer->update($data);
+
+        session()->flash('message','Information Updated Successfully');
+        return redirect()->route('user.details');
     }
 
     /**
