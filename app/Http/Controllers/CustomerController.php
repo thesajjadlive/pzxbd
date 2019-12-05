@@ -20,9 +20,35 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $data['title'] = 'Customers List';
+        $customers = new Customer();
+
+        //search order
+        if ($request->has('search') && $request->search != null){
+            $customers = $customers->where('first_name','like','%'.$request->search.'%');
+        }
+
+        $customers = $customers->OrderBy('id','desc')->paginate(10);
+
+        //search result next page
+        if (isset($request->status) || $request->search) {
+            $render['search'] = $request->search;
+            $customers = $customers->appends($render);
+        }
+
+        $data['customers'] = $customers;
+        $data['serial'] = managePagination($customers);
+
+        return view('backend.customer.index',$data);
+    }
+
+    public function info($id)
+    {
+        $data['title'] = 'Customer Details';
+        $data['customer'] = Customer::findOrFail($id);
+        return view('backend.customer.show',$data);
     }
 
     /**

@@ -60,9 +60,21 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{route('user.index')}}">
+        <a class="nav-link" href="{{route('order.index')}}">
+            <i class="fab fa-first-order"></i>
+            <span>Orders</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('customer.index')}}">
             <i class="fa fa-user"></i>
-            <span>Users</span></a>
+            <span>Customers</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('user.index')}}">
+            <i class="fas fa-user-shield"></i>
+            <span>Admins</span></a>
     </li>
 
     <li class="nav-item">
@@ -74,7 +86,7 @@
     <li class="nav-item">
         <a class="nav-link" href="{{route('category.index')}}">
             <i class="fa fa-cog"></i>
-            <span>Setting</span></a>
+            <span>Settings</span></a>
     </li>
 
 

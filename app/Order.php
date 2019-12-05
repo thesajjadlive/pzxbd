@@ -15,4 +15,13 @@ class Order extends Model
         'payment_status',
         'payment_type'
     ];
+
+    public function order_detail()
+    {
+        return $this->hasMany(OrderDetail::class);
+    }
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
 }

@@ -142,6 +142,14 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     Route::post('user/{id}/restore','UserController@restore')->name('user.restore');
     Route::delete('user/{id}/delete','UserController@delete')->name('user.delete');
 
+//Orders routes
+    Route::get('orders','OrderController@index')->name('order.index');
+    Route::get('orders/{id}','OrderController@show')->name('order.show');
+
+//customer view route
+    Route::get('customers','CustomerController@index')->name('customer.index');
+    Route::get('customers/{id}','CustomerController@info')->name('customer.show');
+
 });
 
 Auth::routes();
