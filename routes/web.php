@@ -150,6 +150,8 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     Route::get('customers','CustomerController@index')->name('customer.index');
     Route::get('customers/{id}','CustomerController@info')->name('customer.show');
 
+//setting routes
+    Route::resource('setting','SettingController');
 });
 
 Auth::routes();

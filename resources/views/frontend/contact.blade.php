@@ -53,29 +53,26 @@
 
                 <div class="col-md-4">
                     <h2 class="light-title">Contact <strong>Details</strong></h2>
-
+                    @foreach($settings as $setting)
                     <div class="contact-info">
                         <div>
                             <i class="icon-phone"></i>
-                            <p><a href="tel:">02 7654321</a></p>
-                            <p><a href="tel:">02 1234567</a></p>
+                            <p><a href="tel:{{ $setting->phone_1 }}">{{ $setting->phone_1 }}</a></p>
+                            <p><a href="tel:{{ $setting->phone_2 }}">{{ $setting->phone_2 }}</a></p>
                         </div>
-                        <div>
-                            <i class="icon-mobile"></i>
-                            <p><a href="tel:">01715 123456</a></p>
-                            <p><a href="tel:">01819 123456</a></p>
-                        </div>
+
                         <div>
                             <i class="icon-mail-alt"></i>
-                            <p><a href="mailto:#">pzxbd@gmail.com</a></p>
-                            <p><a href="mailto:#">info@pzxbd.com</a></p>
+                            <p><a href="mailto:{{ $setting->email_1 }}">{{ $setting->email_1 }}</a></p>
+                            <p><a href="mailto:{{ $setting->email_2 }}">{{ $setting->email_2 }}</a></p>
                         </div>
                         <div>
                             <i class="icon-skype"></i>
-                            <p>pzxbd_skype</p>
-                            <p>ceo_pzxbd</p>
+                            <a href="skype:{{ $setting->skype_1 }}?call">{{ $setting->skype_1 }}</a> <br>
+                            <a href="skype:{{ $setting->skype_2 }}?call">{{ $setting->skype_2 }}</a>
                         </div>
                     </div><!-- End .contact-info -->
+                    @endforeach
                 </div><!-- End .col-md-4 -->
             </div><!-- End .row -->
         </div><!-- End .container -->

@@ -60,7 +60,9 @@
             </button>
             <div class="header-contact">
                 <span>Call us now</span>
-                <a href="tel:#"><strong>01715 123 456</strong></a>
+                @foreach ($settings as $setting)
+                <a href="tel:{{$setting->phone_1}}"><strong>{{ $setting->phone_1 }}</strong></a>
+                @endforeach
             </div><!-- End .header-contact -->
 
             <div class="dropdown cart-dropdown">

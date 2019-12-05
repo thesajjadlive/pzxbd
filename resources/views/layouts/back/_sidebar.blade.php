@@ -77,14 +77,14 @@
             <span>Admins</span></a>
     </li>
 
-    <li class="nav-item">
+    {{--<li class="nav-item">
         <a class="nav-link" href="{{route('category.index')}}">
             <i class="fa fa-sliders"></i>
             <span>Slider</span></a>
-    </li>
+    </li>--}}
 
     <li class="nav-item">
-        <a class="nav-link" href="{{route('category.index')}}">
+        <a class="nav-link" href="{{route('setting.index')}}">
             <i class="fa fa-cog"></i>
             <span>Settings</span></a>
     </li>

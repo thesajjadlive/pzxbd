@@ -45,19 +45,21 @@
             <div class="col-lg-4 col-md-6">
                 <div class="widget">
                     <ul class="contact-info">
+                        @foreach($settings as $setting)
                         <li>
-                            <span class="contact-info-label">Address:</span>151/7 Green Road, Panthapath Signal, Dhaka-1205
+                            <span class="contact-info-label">Address:</span>{{ $setting->address }}
                         </li>
                         <li>
-                            <span class="contact-info-label">Phone:</span>Toll Free <a href="tel:">(+88) 01715-123456</a>
+                            <span class="contact-info-label">Phone:</span>Toll Free <a href="tel:{{ $setting->phone_1 }}">{{ $setting->phone_1 }}</a>
                         </li>
                         <li>
-                            <span class="contact-info-label">Email:</span> <a href="mailto:mail@example.com">info@pzxbd.com</a>
+                            <span class="contact-info-label">Email:</span> <a href="mailto:{{ $setting->email_1 }}">{{ $setting->email_1 }}</a>
                         </li>
                         <li>
                             <span class="contact-info-label">Working Days/Hours:</span>
                             Sat - Thu / 10:00AM - 8:00PM
                         </li>
+                        @endforeach
                     </ul>
                 </div><!-- End .widget -->
             </div><!-- End .col-lg-4 -->
@@ -71,9 +73,11 @@
         <img src="{{ asset('assets/frontend/images/payment.png') }}" alt="payment methods" class="footer-payments">
 
         <div class="social-icons">
-            <a href="https://www.facebook.com" class="social-icon" target="_blank"><i class="icon-facebook"></i></a>
-            <a href="https://www.twitter.com" class="social-icon" target="_blank"><i class="icon-twitter"></i></a>
-            <a href="https://www.linkedin.com" class="social-icon" target="_blank"><i class="icon-linkedin"></i></a>
+            @foreach($settings as $setting)
+            <a href="https://{{ $setting->facebook }}" class="social-icon" target="_blank"><i class="icon-facebook"></i></a>
+            <a href="https://{{ $setting->twitter }}" class="social-icon" target="_blank"><i class="icon-twitter"></i></a>
+            <a href="https://{{$setting->linkedin}}" class="social-icon" target="_blank"><i class="icon-linkedin"></i></a>
+            @endforeach
         </div><!-- End .social-icons -->
     </div><!-- End .footer-bottom -->
 </div><!-- End .containr -->
