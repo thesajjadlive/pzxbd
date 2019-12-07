@@ -67,6 +67,11 @@ Route::get('account', 'CustomerController@view')->name('user.view')->middleware(
 Route::get('account/info', 'CustomerController@show')->name('user.details')->middleware('customer');
 Route::get('account/{id}/edit', 'CustomerController@edit')->name('user.info.edit')->middleware('customer');
 Route::put('account/{id}','CustomerController@update')->name('user.info.update')->middleware('customer');
+
+//MyOrders
+Route::get('my-orders','OrderController@myorder')->name('myorder.index')->middleware('customer');
+Route::get('my-orders/{id}','OrderController@myorder_details')->name('myorder.show')->middleware('customer');
+
 //Customer routes
 
 

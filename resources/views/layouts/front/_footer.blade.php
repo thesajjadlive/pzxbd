@@ -9,7 +9,7 @@
                         <li><a href="{{ url('about') }}">About Us</a></li>
                         <li><a href="{{ url('contact') }}">Contact Us</a></li>
                         <li><a href="{{ route('user.view') }}">My Account</a></li>
-                        <li><a href="#">Orders History</a></li>
+                        <li><a href="{{ route('myorder.index') }}">Orders History</a></li>
                         <li><a href="#">Advanced Search</a></li>
                     </ul>
                 </div><!-- End .widget -->

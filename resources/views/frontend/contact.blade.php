@@ -68,8 +68,8 @@
                         </div>
                         <div>
                             <i class="icon-skype"></i>
-                            <a href="skype:{{ $setting->skype_1 }}?call">{{ $setting->skype_1 }}</a> <br>
-                            <a href="skype:{{ $setting->skype_2 }}?call">{{ $setting->skype_2 }}</a>
+                            <p><a href="skype:{{ $setting->skype_1 }}?call">{{ $setting->skype_1 }}</a> </p>
+                            <p><a href="skype:{{ $setting->skype_2 }}?call">{{ $setting->skype_2 }}</a> </p>
                         </div>
                     </div><!-- End .contact-info -->
                     @endforeach

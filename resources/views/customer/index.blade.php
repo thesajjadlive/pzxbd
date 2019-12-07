@@ -86,7 +86,7 @@
                         <li class="active"><a href="{{ route('user.view') }}">Account Dashboard</a></li>
                         <li><a href="{{ route('user.details') }}">Account Information</a></li>
                         <li><a href="{{ route('user.info.edit',$customer->id) }}">Edit Information</a></li>
-                        <li><a href="#">My Orders</a></li>
+                        <li><a href="{{ route('myorder.index') }}">My Orders</a></li>
                         <li><a href="#">My Product Reviews</a></li>
                     </ul>
                 </div><!-- End .widget -->

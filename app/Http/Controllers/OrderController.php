@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -104,4 +105,24 @@ class OrderController extends Controller
     {
         //
     }
+
+    public function myorder()
+    {
+        $id = Auth::guard('customer')->user()->id;
+        $orders = new Order();
+        $orders = $orders->with(['order_detail']);
+        $orders = $orders->where('customer_id', $id)->orderBy('id','DESC')->paginate(10);
+
+        $data['orders'] = $orders;
+        $data['serial'] = managePagination($orders);
+
+        return view('customer.order.index',$data);
+    }
+
+    public function myorder_details($id)
+    {
+        $data['order'] = Order::findOrFail($id);
+        return view('customer.order.show',$data);
+    }
+
 }
