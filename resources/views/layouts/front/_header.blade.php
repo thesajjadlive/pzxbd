@@ -178,7 +178,7 @@
                 <li>
                     <a href="{{ url('contact') }}">Contact</a>
                 </li>
-                <li class="float-right buy-effect"><a href="#"><span>Special Offer <span class="tip tip-hot">Hot!</span></span></a></li>
+                <li class="float-right buy-effect"><a href="{{ route('offer') }}"><span>Special Offer <span class="tip tip-hot">Hot!</span></span></a></li>
             </ul>
         </nav>
     </div><!-- End .header-bottom -->

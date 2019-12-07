@@ -85,7 +85,8 @@ Route::get('pass/reset/{token}', 'Customer\ResetPasswordController@showResetForm
 Route::post('pass/reset', 'Customer\ResetPasswordController@reset')->name('user.password.update');
 //multi-auth routes
 
-
+//special offer route
+Route::get('offer', 'CampaignController@offer')->name('offer');
 
 
 

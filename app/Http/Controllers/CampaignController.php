@@ -63,21 +63,21 @@ class CampaignController extends Controller
             'name'=>'required',
             'details'=>'required',
             'date'=>'required',
-            'file_path'=>'required'
+            'file_path'=>'required|image'
         ]);
-        $campaign= $request->except('_token');
+        $data= $request->except('_token');
 
 
         //file upload
         if ($request->hasFile('file_path')){
             $file = $request->file('file_path');
-            $file_name = time().'cn'.rand(0000,9999).$file->getClientOriginalName();
-            $file->move('images/campaigns/', $file_name);
-            $campaign['file_path'] = 'images/campaigns/'.$file_name;
+            $file_name = time().'SS'.rand(0000,9999).$file->getClientOriginalName();
+            $file->move(public_path('images/campaigns/'), $file_name);
+            $data['file_path'] = 'images/campaigns/'.$file_name;
         }
 
 
-        Campaign::create($campaign);
+        Campaign::create($data);
         session()->flash('message','Campaign Created Successfully!');
         return view('backend.campaign.index');
 
@@ -125,7 +125,7 @@ class CampaignController extends Controller
         //file upload
         if ($request->hasFile('file_path')){
             $file = $request->file('file_path');
-            $file->move('images/campaigns/',$file->getClientOriginalName());
+            $file->move(public_path('images/campaigns/'),$file->getClientOriginalName());
             File::delete($campaign->file);
             $campaign_data['file_path'] = 'images/campaigns/'.$file->getClientOriginalName();
         }
@@ -161,5 +161,12 @@ class CampaignController extends Controller
         $campaign->forceDelete();
         session()->flash('message','Camapaign Permanently Removed!');
         return redirect()->route('campaign.index');
+    }
+
+
+    public function offer()
+    {
+        $data['offers'] = Campaign::orderBy('id','DESC')->paginate(5);
+        return view('frontend.offer',$data);
     }
 }
