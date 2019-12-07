@@ -66,7 +66,7 @@ class UserController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $file_name = time().'SS'.rand(0000,9999).$file->getClientOriginalName();
-            $file->move('images/users/', $file_name);
+            $file->move(public_path('images/users/'),$file_name);
             $user['image'] = 'images/users/' . $file_name;
         }
 
@@ -82,9 +82,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $data['title']="User Profile";
+        return view('backend.user.view',$data);
     }
 
     /**
@@ -138,9 +139,9 @@ class UserController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $file_name = time().'SS'.rand(0000,9999).$file->getClientOriginalName();
-            $file->move('images/users/', $file_name);
+            $file->move(public_path('images/users/'),$file_name);
             File::delete($user->image);
-            $user_req['image'] = 'images/users/' . $file_name;
+            $user_req['image'] = 'images/users/'.$file_name;
         }
 
 

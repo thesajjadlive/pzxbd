@@ -146,6 +146,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     Route::resource('user','UserController');
     Route::post('user/{id}/restore','UserController@restore')->name('user.restore');
     Route::delete('user/{id}/delete','UserController@delete')->name('user.delete');
+    Route::get('user/info','UserController@show')->name('user.info');
 
 //Orders routes
     Route::get('orders','OrderController@index')->name('order.index');
@@ -160,6 +161,6 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     Route::resource('setting','SettingController');
 });
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 /* End of Dashboard Route Group */
