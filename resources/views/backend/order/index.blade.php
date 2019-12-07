@@ -39,12 +39,36 @@
                                 <td>{{ $order->status }}</td>
                                 <td>{{ $order->payment_status }}</td>
                                 <td>
+                                    <div class="dropdown d-inline">
+                                        <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Status
+                                            <span class="caret"></span></button>
+                                        <ul class="dropdown-menu">
+                                            <li class="dropdown-header">Change Status</li>
+                                            <li>
+                                                @if($order->status != 'processing')
+                                                    <a href="{{ route('changeStatus',[$order->id,'processing']) }}" onclick="return confirm('Are you confirm to change status?')">Processing</a>
+                                                @endif
+                                            </li>
+                                            <li>
+                                                @if($order->status != 'shipping')
+                                                    <a href="{{ route('changeStatus',[$order->id,'shipping']) }}" onclick="return confirm('Are you confirm to change status?')">Shipping</a>
+                                                @endif
+                                            </li>
+                                            <li>
+                                                @if($order->status != 'delivered')
+                                                    <a href="{{ route('changeStatus',[$order->id,'delivered']) }}" onclick="return confirm('Are you confirm to change status?')">Delivered</a>
+                                                @endif
+                                            </li>
+                                            <li>
+                                                @if(auth()->user()->type != 'operator')
+                                                    @if($order->status != 'canceled')
+                                                        <a href="{{ route('changeStatus',[$order->id,'canceled']) }}" onclick="return confirm('Are you confirm to change status?')">Canceled</a>
+                                                    @endif
+                                                @endif
+                                            </li>
+                                        </ul>
+                                    </div>
                                     <a href="{{ route('order.show',$order->id) }}" class="btn btn-sm btn-info">Details</a>
-                                    {{--<form action="{{ route('category.destroy',$category->id) }}" method="post" style="display: inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-warning" onclick="return confirm('Are you sure to delete?')"><i class="fa fa-trash"></i></button>
-                                    </form>--}}
                                 </td>
                             </tr>
                         @endforeach
@@ -65,6 +89,8 @@
 @push('library-css')
 
 @endpush
+
+
 
 
 

@@ -71,11 +71,14 @@
             <span>Customers</span></a>
     </li>
 
+
+    @if(auth()->user()->type != 'operator')
     <li class="nav-item">
         <a class="nav-link" href="{{route('user.index')}}">
             <i class="fas fa-user-shield"></i>
             <span>Admins</span></a>
     </li>
+    @endif
 
     {{--<li class="nav-item">
         <a class="nav-link" href="{{route('category.index')}}">

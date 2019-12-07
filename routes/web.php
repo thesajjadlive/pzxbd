@@ -150,6 +150,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
 //Orders routes
     Route::get('orders','OrderController@index')->name('order.index');
     Route::get('orders/{id}','OrderController@show')->name('order.show');
+    Route::get('orders/{id}/change-status/{status}','OrderController@change_status')->name('changeStatus');
 
 //customer view route
     Route::get('customers','CustomerController@index')->name('customer.index');

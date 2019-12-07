@@ -16,10 +16,16 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data['title'] = 'User List';
-        $data['users'] = User::orderBy('id','DESC')->withTrashed()->paginate(10);
-        $data['serial'] = managePagination($data['users']);
-        return view('backend.user.index',$data);
+        if(auth()->user()->type != 'operator'){
+            $data['title'] = 'User List';
+            $data['users'] = User::orderBy('id','DESC')->withTrashed()->paginate(10);
+            $data['serial'] = managePagination($data['users']);
+            return view('backend.user.index',$data);
+        }
+        else{
+            session()->flash('message','Unauthorized Request');
+        }
+        return redirect()->back();
     }
 
     /**
@@ -29,8 +35,14 @@ class UserController extends Controller
      */
     public function create()
     {
+        if(auth()->user()->type != 'operator'){
         $data['title'] = "Create User";
         return view('backend.user.create', $data);
+        }
+        else{
+            session()->flash('message','Unauthorized Request');
+        }
+        return redirect()->back();
     }
 
     /**
@@ -83,9 +95,16 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        if(auth()->user()->type != 'operator'){
         $data['title']="Edit User";
         $data['user']=User::findOrFail($id);
         return view('backend.user.edit',$data);
+        }
+        else{
+            session()->flash('message','Unauthorized Request');
+        }
+        return redirect()->back();
+
     }
 
     /**

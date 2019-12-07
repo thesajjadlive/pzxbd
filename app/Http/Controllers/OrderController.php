@@ -125,4 +125,24 @@ class OrderController extends Controller
         return view('customer.order.show',$data);
     }
 
+    public function change_status($order_id,$status)
+    {
+        if($status == 'processing' || $status == 'shipping' || $status == 'delivered' || $status == 'canceled')
+        {
+            if(auth()->user()->type == 'operator' && $status != 'canceled')
+            {
+                Order::findOrFail($order_id)->update(['status'=>$status]);
+                session()->flash('message','Order status updated successfully');
+            }else{
+                session()->flash('message','Unauthorized Request');
+            }
+            if(auth()->user()->type != 'operator')
+            {
+                Order::findOrFail($order_id)->update(['status'=>$status]);
+                session()->flash('message','Order status updated successfully');
+            }
+        }
+        return redirect()->back();
+    }
+
 }
