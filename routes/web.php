@@ -50,6 +50,8 @@ Route::get('ajax/add-to-cart/{product_id}','Front\AjaxController@addToCart')->na
 Route::get('remove-cart/{product_id}','Front\AjaxController@delete')->name('remove.cart');
 Route::post('update-cart/{product_id}','Front\AjaxController@update')->name('update.cart');
 
+//contact us
+Route::post('contact','SubscribeController@contact_store')->name('contact.store');
 
 //about and contact route
 Route::get('about', function () {
@@ -92,16 +94,6 @@ Route::post('pass/reset', 'Customer\ResetPasswordController@reset')->name('user.
 Route::get('offer', 'CampaignController@offer')->name('offer');
 
 
-
-
-
-//testing routes
-Route::get('test',function (){
-    return Auth::guard('customer')->user()->id;
-});
-Route::get('llogin',function (){
-    return view('not_found');
-});
 
 
 

@@ -24,25 +24,21 @@
                 <div class="col-md-8">
                     <h2 class="light-title">Write <strong>Us</strong></h2>
 
-                    <form action="#">
+                    <form action="{{ route('contact.store') }}" method="post" enctype="multipart/form-data">
+                        @csrf
                         <div class="form-group required-field">
                             <label for="contact-name">Name</label>
-                            <input type="text" class="form-control" id="contact-name" name="contact-name" required>
+                            <input type="text" class="form-control" id="contact-name" value="{{ old('name') }}" name="name" required>
                         </div><!-- End .form-group -->
 
                         <div class="form-group required-field">
                             <label for="contact-email">Email</label>
-                            <input type="email" class="form-control" id="contact-email" name="contact-email" required>
-                        </div><!-- End .form-group -->
-
-                        <div class="form-group">
-                            <label for="contact-phone">Phone Number</label>
-                            <input type="tel" class="form-control" id="contact-phone" name="contact-phone">
+                            <input type="email" class="form-control" id="contact-email" value="{{ old('email') }}" name="email" required>
                         </div><!-- End .form-group -->
 
                         <div class="form-group required-field">
                             <label for="contact-message">What’s on your mind?</label>
-                            <textarea cols="30" rows="1" id="contact-message" class="form-control" name="contact-message" required></textarea>
+                            <textarea cols="30" rows="1" id="contact-message" class="form-control" value="{{ old('message') }}" name="message" required></textarea>
                         </div><!-- End .form-group -->
 
                         <div class="form-footer">
