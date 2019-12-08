@@ -198,7 +198,7 @@
                     <div class="col-lg-6 mb-4">
                         <div class="card bg-primary text-white shadow">
                             <div class="card-body">
-                                Primary
+                                Shipping
                                 <div class="text-white-50 small"></div>
                             </div>
                         </div>
@@ -206,7 +206,7 @@
                     <div class="col-lg-6 mb-4">
                         <div class="card bg-success text-white shadow">
                             <div class="card-body">
-                                Success
+                                Delivered
                                 <div class="text-white-50 small"></div>
                             </div>
                         </div>
@@ -214,7 +214,7 @@
                     <div class="col-lg-6 mb-4">
                         <div class="card bg-info text-white shadow">
                             <div class="card-body">
-                                Info
+                                Processing
                                 <div class="text-white-50 small"></div>
                             </div>
                         </div>
@@ -222,7 +222,7 @@
                     <div class="col-lg-6 mb-4">
                         <div class="card bg-warning text-white shadow">
                             <div class="card-body">
-                                Warning
+                                Pending
                                 <div class="text-white-50 small"></div>
                             </div>
                         </div>
@@ -230,7 +230,7 @@
                     <div class="col-lg-6 mb-4">
                         <div class="card bg-danger text-white shadow">
                             <div class="card-body">
-                                Danger
+                                Canceled
                                 <div class="text-white-50 small"></div>
                             </div>
                         </div>

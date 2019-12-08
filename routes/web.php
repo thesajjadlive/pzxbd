@@ -58,6 +58,9 @@ Route::get('about', function () {
 Route::get('contact', function () {
     return view('frontend.contact');
 });
+Route::get('privacy-policy', function () {
+    return view('frontend.policy');
+});
 
 
 //Customer routes
