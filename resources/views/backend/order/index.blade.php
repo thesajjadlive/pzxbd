@@ -8,6 +8,16 @@
                 <div class="search-container float-right">
                     <form class="form-inline">
                         <div class="form-group">
+                            <select class="form-control" name="status" id="">
+                                <option value="">Select Status</option>
+                                <option value="pending">Pending</option>
+                                <option value="processing">Processing</option>
+                                <option value="shipping">Shipping</option>
+                                <option value="delivered">Delivered</option>
+                                <option value="canceled">Canceled</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <input class="form-control" type="text" placeholder="Order Number.." name="search">
                         </div>
                         <button class="btn btn-outline-dark" type="submit">Search</button>

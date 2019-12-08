@@ -24,6 +24,11 @@ class OrderController extends Controller
             $orders = $orders->where('order_number','like','%'.$request->search.'%');
         }
 
+        //search via status
+        if ($request->has('status') && $request->status != null){
+            $orders = $orders->where('status',$request->status);
+        }
+
         $orders = $orders->OrderBy('id','desc')->paginate(10);
 
         //search result next page
