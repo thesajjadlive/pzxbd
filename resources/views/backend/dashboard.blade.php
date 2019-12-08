@@ -123,18 +123,6 @@
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                        <div class="dropdown no-arrow">
-                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                                <div class="dropdown-header">Dropdown Header:</div>
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </div>
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
@@ -163,31 +151,44 @@
             <!-- Content Column -->
             <div class="col-lg-6 mb-4">
 
+                @php
+                    $all = count($orders) /100;
+                    $cancel = count($canceled)/$all ;
+                    $pend = count($pending)/$all ;
+                    $process = count($processing)/$all ;
+                    $ship = count($shipping)/$all ;
+                    $deliver = count($delivered)/$all ;
+                @endphp
+
                 <!-- Project Card Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Orders Statistics</h6>
                     </div>
                     <div class="card-body">
-                        <h4 class="small font-weight-bold">Server Migration <span class="float-right">20%</span></h4>
+                        <h4 class="small font-weight-bold">Canceled <span class="float-right">{{ round($cancel) }}%</span></h4>
                         <div class="progress mb-4">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: {{ round($cancel) }}%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <h4 class="small font-weight-bold">Sales Tracking <span class="float-right">40%</span></h4>
+
+                        <h4 class="small font-weight-bold">Pending <span class="float-right">{{ round($pend) }}%</span></h4>
                         <div class="progress mb-4">
-                            <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: {{ round($pend) }}%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <h4 class="small font-weight-bold">Customer Database <span class="float-right">60%</span></h4>
+
+                        <h4 class="small font-weight-bold">Processing <span class="float-right">{{ round($process) }}%</span></h4>
                         <div class="progress mb-4">
-                            <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-info" role="progressbar" style="width: round($process)%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <h4 class="small font-weight-bold">Payout Details <span class="float-right">80%</span></h4>
+
+                        <h4 class="small font-weight-bold">Shipping <span class="float-right">{{ round($ship) }}%</span></h4>
                         <div class="progress mb-4">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar" role="progressbar" style="width: {{ round($ship) }}%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <h4 class="small font-weight-bold">Account Setup <span class="float-right">Complete!</span></h4>
+
+                        <h4 class="small font-weight-bold">Delivered <span class="float-right">{{ round($deliver) }}%</span></h4>
                         <div class="progress">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-success" role="progressbar" style="width: {{ round($deliver) }}%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                 </div>
@@ -198,7 +199,7 @@
                         <div class="card bg-primary text-white shadow">
                             <div class="card-body">
                                 Primary
-                                <div class="text-white-50 small">#4e73df</div>
+                                <div class="text-white-50 small"></div>
                             </div>
                         </div>
                     </div>
@@ -206,7 +207,7 @@
                         <div class="card bg-success text-white shadow">
                             <div class="card-body">
                                 Success
-                                <div class="text-white-50 small">#1cc88a</div>
+                                <div class="text-white-50 small"></div>
                             </div>
                         </div>
                     </div>
@@ -214,7 +215,7 @@
                         <div class="card bg-info text-white shadow">
                             <div class="card-body">
                                 Info
-                                <div class="text-white-50 small">#36b9cc</div>
+                                <div class="text-white-50 small"></div>
                             </div>
                         </div>
                     </div>
@@ -222,7 +223,7 @@
                         <div class="card bg-warning text-white shadow">
                             <div class="card-body">
                                 Warning
-                                <div class="text-white-50 small">#f6c23e</div>
+                                <div class="text-white-50 small"></div>
                             </div>
                         </div>
                     </div>
@@ -230,7 +231,7 @@
                         <div class="card bg-danger text-white shadow">
                             <div class="card-body">
                                 Danger
-                                <div class="text-white-50 small">#e74a3b</div>
+                                <div class="text-white-50 small"></div>
                             </div>
                         </div>
                     </div>
@@ -238,7 +239,7 @@
                         <div class="card bg-secondary text-white shadow">
                             <div class="card-body">
                                 Secondary
-                                <div class="text-white-50 small">#858796</div>
+                                <div class="text-white-50 small"></div>
                             </div>
                         </div>
                     </div>
@@ -272,7 +273,6 @@
                         <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
                             as opposed to using 'Content here, content here', making it look like readable English.
                             Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
-                        <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
                     </div>
                 </div>
 
