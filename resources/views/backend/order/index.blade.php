@@ -5,6 +5,7 @@
 
         <div class="card shadow mb-4">
             <div class="card-header py-3">
+                <a class="btn btn-primary float-left" href="{{ route('order.export') }}">Export</a>
                 <div class="search-container float-right">
                     <form class="form-inline">
                         <div class="form-group">
