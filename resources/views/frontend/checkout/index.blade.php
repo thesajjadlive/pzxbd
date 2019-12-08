@@ -119,12 +119,23 @@
                                     </tr>
 
                                     @php
-                                        $shipping += $item['quantity'] * 30 ;
+
                                         $total += $item['quantity'] * $item['price'] ;
+                                        $shipping += $item['quantity'] * 30 ;
                                     @endphp
 
                                 @endforeach
                             @endif
+
+
+                            <!-- Shipping Condition -->
+                           {{-- @php
+                             if ($total >= 3000){
+                                    $shipping = 0;
+                                }
+                            @endphp--}}
+                            <!-- Shipping Condition -->
+
                             <tr>
                                 <td>Shipping</td>
                                 <td class="text-right">{{ $shipping }}/-</td>
