@@ -85,13 +85,13 @@
             <i class="fa fa-sliders"></i>
             <span>Slider</span></a>
     </li>--}}
-
+    @if(auth()->user()->type != 'operator')
     <li class="nav-item">
         <a class="nav-link" href="{{route('setting.index')}}">
             <i class="fa fa-cog"></i>
             <span>Settings</span></a>
     </li>
-
+    @endif
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

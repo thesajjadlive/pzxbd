@@ -72,6 +72,7 @@
         <p class="footer-copyright">Pzxbd.com &copy;  2019.  All Rights Reserved</p>
         <img src="{{ asset('assets/frontend/images/payment.png') }}" alt="payment methods" class="footer-payments">
 
+
         <div class="social-icons">
             @foreach($settings as $setting)
             <a href="https://{{ $setting->facebook }}" class="social-icon" target="_blank"><i class="icon-facebook"></i></a>
@@ -80,4 +81,5 @@
             @endforeach
         </div><!-- End .social-icons -->
     </div><!-- End .footer-bottom -->
+    <p class="footer-copyright" style="color: #1b1e21">Developed by Sajjad Hossain</p>
 </div><!-- End .containr -->
