@@ -40,7 +40,7 @@ Route::get('clear-cart','Front\ProductController@clear')->name('clear.cart');
 
 //guest store and payment route
 Route::post('customer/store','CustomerController@store')->name('customer.store');
-Route::get('payment/{customerId}/{orderId}','Front\CheckoutController@payment')->name('payment');
+Route::get('payment/{customerId}/{orderId}','Front\CheckoutController@payment')->name('payment')->middleware('customer');
 
 //checkout page route
 Route::get('checkout','Front\CheckoutController@index')->name('checkout')->middleware('customer');

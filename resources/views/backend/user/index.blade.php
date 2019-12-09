@@ -48,7 +48,7 @@
                                         <form action="{{ route('user.destroy',$user->id) }}" method="post" style="display: inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-warning" onclick="return confirm('Are you sure to delete?')"><i class="fa fa-trash"></i></button>
+                                            <button type="submit" class="btn btn-sm btn-warning" onclick="return confirm('Are you sure to delete?')" {{ $user->id == auth()->user()->id ?'disabled':' ' }}><i class="fa fa-trash"></i></button>
                                         </form>
                                     @else
                                         <form action="{{ route('user.restore',$user->id) }}" method="post" style="display: inline">
