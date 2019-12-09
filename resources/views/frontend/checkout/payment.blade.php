@@ -50,6 +50,10 @@
                                 <td>{{ $customer->street_address.', '.$customer->district.'  '.$customer->zip }}</td>
                             </tr>
                             <tr>
+                                <th>Coupon Discount</th>
+                                <td>{{ $order->discount }}/-</td>
+                            </tr>
+                            <tr>
                                 <th>Payable Amount</th>
                                 <td>{{ $order->total_price }}/-</td>
                             </tr>

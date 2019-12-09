@@ -6,10 +6,10 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <div class="search-container text-center">
-                    <h4>Order Details</h4>
+                    <h4>Order Details <span><a class="btn btn-sm btn-outline-secondary float-right" href="JavaScript:window.print();">Print Page</a></span></h4>
                 </div>
             </div>
-            <div class="card-body">
+            <div class="card-body" id="printcontent">
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover table-striped">
                             <tr>
@@ -73,6 +73,10 @@
                                         </tr>
                                     @endforeach
                                     <tr>
+                                        <th class="text-right" colspan="4">Coupon Discount</th>
+                                        <th class="text-right">{{ $order->discount }}</th>
+                                    </tr>
+                                    <tr>
                                         <th class="text-right" colspan="4">Total</th>
                                         <th class="text-right">{{ $order->total_price }}</th>
                                     </tr>
@@ -97,7 +101,14 @@
 
 
 @push('custom-css')
-
+    <style type="text/css">
+        @media print
+        {
+            body * { visibility: hidden; }
+            #printcontent * { visibility: visible; }
+            #printcontent { position: absolute; top: 50px; left: 30px; }
+        }
+    </style>
 @endpush
 
 
