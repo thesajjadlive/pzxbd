@@ -11,6 +11,8 @@
             </div>
             <div class="card-body" id="printcontent">
                 <div class="table-responsive">
+                    <h4>PZXBD</h4>
+                    <p>www.pzxbd.com</p>
                     <table class="table table-bordered table-hover table-striped">
                             <tr>
                                 <th style="width: 30%">Order Number</th>

@@ -23,12 +23,17 @@
             <div class="col-lg-2"></div>
             <div class="col-lg-8 " id="printcontent">
                 <div class="checkout-payment">
-                    <h2 class="step-title">Ship To:</h2>
+
+                    <h2 class="step-title">PZXBD</h2>
 
                     <div class="checkout-info-box">
 
                         <table class="table table-borderless">
                             <tbody>
+                            <tr>
+                                <th><h3 class="text-uppercase">Ship to:</h3></th>
+                                <td></td>
+                            </tr>
                             <tr>
                                 <th>Order Number</th>
                                 <td>{{ $order->order_number }}</td>
