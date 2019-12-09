@@ -25,7 +25,6 @@
                         </div>
                         <div class="col-lg-6 padding-left-lg">
                             <h3 class="subtitle">{{ $offer->name }}</h3>
-                            <h5>Offer Validity:  {{ $offer->date }}</h5>
                             <p class="overflow-hidden">{{ $offer->details }}</p>
 
                         </div>

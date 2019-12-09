@@ -92,7 +92,7 @@ class CustomerController extends Controller
          DB::beginTransaction();
          try {
 
-             $customer_id = $customer_id = Auth::guard('customer')->user()->id;
+             $customer_id = Auth::guard('customer')->user()->id;
 
 
              //order store

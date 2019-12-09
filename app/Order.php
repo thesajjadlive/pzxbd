@@ -10,6 +10,7 @@ class Order extends Model
         'customer_id',
         'order_number',
         'total_price',
+        'discount',
         'date',
         'status',
         'payment_status',

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Coupon;
+use App\Order;
 use Illuminate\Http\Request;
 
 class CouponController extends Controller
@@ -144,5 +145,34 @@ class CouponController extends Controller
         $coupon->forceDelete();
         session()->flash('message','Coupon Permanently Removed');
         return redirect()->route('coupon.index');
+    }
+
+    public function discount(Request $request,$id)
+    {
+        $order = Order::findOrFail($id) ;
+        $coupon = Coupon::where('code', $request->coupon_code)->first();
+
+
+        if (!$coupon) {
+            session()->flash('err','Invalid coupon code. Please try again.');
+            return redirect()->back();
+        }
+
+        if ($order->discount == null && $order->total_price >= $coupon->min_limit){
+
+            $discount = $coupon->value;
+            $total = $order->total_price - $coupon->value;
+
+            $order->update(['total_price' => $total, 'discount' => $discount]);
+
+            session()->flash('scc','Coupon applied successfully');
+            return redirect()->back();
+        }
+        else{
+            session()->flash('err','Already used or Not eligible for coupon');
+            return redirect()->back();
+        }
+
+
     }
 }

@@ -78,13 +78,25 @@
                 </div><!-- End .checkout-payment -->
 
                 <div class="checkout-discount">
+                    @if(session('err'))
+                        <div class="text-center" style="margin: 0 0 20px 0">
+                            <span class="alert alert-danger">{{ session('err') }}</span>
+                        </div>
+                    @endif
+                    @if(session('scc'))
+                        <div class="text-center" style="margin: 0 0 20px 0">
+                            <span class="alert alert-success">{{ session('scc') }}</span>
+                        </div>
+                    @endif
                     <h4>
                         <a data-toggle="collapse" href="#checkout-discount-section" class="collapsed" role="button" aria-expanded="false" aria-controls="checkout-discount-section">Apply Discount Code</a>
                     </h4>
 
                     <div class="collapse" id="checkout-discount-section">
-                        <form action="#">
-                            <input type="text" class="form-control form-control-sm" placeholder="Enter discount code"  required>
+
+                        <form action="{{ route('discount',$order->id) }}" method="get">
+                            @csrf
+                            <input type="text" name="coupon_code" class="form-control form-control-sm" placeholder="Enter discount code"  required>
                             <button class="btn btn-sm btn-outline-secondary" type="submit">Apply Discount</button>
                         </form>
                     </div><!-- End .collapse -->
