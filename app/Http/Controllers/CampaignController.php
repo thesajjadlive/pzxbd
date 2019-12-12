@@ -79,7 +79,7 @@ class CampaignController extends Controller
 
         Campaign::create($data);
         session()->flash('message','Campaign Created Successfully!');
-        return view('backend.campaign.index');
+        return redirect()->route('campaign.index');
 
     }
 
