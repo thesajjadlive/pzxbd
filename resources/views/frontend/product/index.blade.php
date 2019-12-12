@@ -23,10 +23,10 @@
         <div class="container">
             <nav class="toolbox horizontal-filter">
                 <div class="toolbox-left">
-                    <div class="filter-toggle">
+                    {{--<div class="filter-toggle">
                         <span>Filters:</span>
                         <a href=#>&nbsp;</a>
-                    </div>
+                    </div>--}}
                 </div><!-- End .toolbox-left -->
 
                 <div class="toolbox-item toolbox-sort">
@@ -49,14 +49,6 @@
                         <label>Showing {{ (($products->currentPage()-1)*$products->perPage())+1 }}-{{ ($products->total()<$products->currentPage()*$products->perPage())?$products->total():$products->currentPage()*$products->perPage() }} of {{ $products->total() }} results</label>
                     </div><!-- End .toolbox-item -->
 
-                    <div class="layout-modes">
-                        <a href="category.html" class="layout-btn btn-grid active" title="Grid">
-                            <i class="icon-mode-grid"></i>
-                        </a>
-                        <a href="category-list.html" class="layout-btn btn-list" title="List">
-                            <i class="icon-mode-list"></i>
-                        </a>
-                    </div><!-- End .layout-modes -->
                     <div class="toolbox-item">
             </nav>
 
