@@ -44,5 +44,12 @@ class AppServiceProvider extends ServiceProvider
             $view->with('settings',Setting::orderBy('id','desc')->get());
         });
 
+
+        view()->composer('layouts/front/_mobileMenu', function ($view){
+            $view->with('categories',Category::orderBy('name','ASC')->pluck('name','id'));
+            $view->with('brands',Brand::orderBy('name','ASC')->pluck('name','id'));
+            $view->with('settings',Setting::orderBy('id','desc')->get());
+        });
+
     }
 }
