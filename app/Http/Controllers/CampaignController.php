@@ -126,7 +126,7 @@ class CampaignController extends Controller
         if ($request->hasFile('file_path')){
             $file = $request->file('file_path');
             $file->move(public_path('images/campaigns/'),$file->getClientOriginalName());
-            File::delete($campaign->file);
+            File::delete($campaign->file_path);
             $campaign_data['file_path'] = 'images/campaigns/'.$file->getClientOriginalName();
         }
 

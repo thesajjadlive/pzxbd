@@ -25,8 +25,8 @@
 
 
 <div class="form-group">
-    <input name="file_path"  class="form-control form-control-line @error('file') is-invalid @enderror" type="file">
+    <input name="file_path"  class="form-control form-control-line @error('file_path') is-invalid @enderror" type="file">
 </div>
-@error('file')
+@error('file_path')
 <div class="pl-1 text-danger">{{ $message }}</div>
 @enderror
