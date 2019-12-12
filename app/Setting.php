@@ -17,5 +17,9 @@ class Setting extends Model
         'facebook',
         'twitter',
         'linkedin',
+        'title',
+        'history',
+        'mission',
+        'vision',
         ];
 }

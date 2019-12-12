@@ -99,8 +99,48 @@
             @error('linkedin')
             <div class="pl-1 text-danger">{{ $message }}</div>
             @enderror
+
+
+            <div class="form-group">
+                <label for="color">Site Title :</label>
+                <input name="title" type="text" value="{{ old('title',isset($setting)?$setting->title:null) }}"  class="form-control form-control-line @error('title') is-invalid @enderror" id="email_1">
+            </div>
+            @error('title')
+            <div class="pl-1 text-danger">{{ $message }}</div>
+            @enderror
         </div>
 
+
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="address">History :</label>
+                <textarea name="history" rows="5" class="form-control form-control-line @error('history') is-invalid @enderror" id="history">{{ old('history',isset($setting)?$setting->history:null) }}</textarea>
+            </div>
+            @error('history')
+            <div class="pl-1 text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="address">Mission :</label>
+                <textarea name="mission" rows="5" class="form-control form-control-line @error('mission') is-invalid @enderror" id="mission">{{ old('mission',isset($setting)?$setting->mission:null) }}</textarea>
+            </div>
+            @error('mission')
+            <div class="pl-1 text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="address">Vision :</label>
+                <textarea name="vision" rows="5" class="form-control form-control-line @error('vision') is-invalid @enderror" id="vision">{{ old('vision',isset($setting)?$setting->vision:null) }}</textarea>
+            </div>
+            @error('vision')
+            <div class="pl-1 text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        
 
     </div>
 </section>

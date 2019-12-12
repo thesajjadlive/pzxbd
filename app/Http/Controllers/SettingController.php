@@ -27,6 +27,11 @@ class SettingController extends Controller
      */
     public function create()
     {
+        //
+    }
+
+    public function add()
+    {
         $data['title'] = 'Add Information';
 
         return view('backend.setting.create',$data);
@@ -51,6 +56,10 @@ class SettingController extends Controller
             'facebook'=>'required',
             'twitter'=>'required',
             'linkedin'=>'required',
+            'title'=>'required',
+            'history'=>'required',
+            'mission'=>'required',
+            'vision'=>'required',
         ]);
 
         $setting = $request->except('_token');
@@ -104,6 +113,10 @@ class SettingController extends Controller
             'facebook'=>'required',
             'twitter'=>'required',
             'linkedin'=>'required',
+            'title'=>'required',
+            'history'=>'required',
+            'mission'=>'required',
+            'vision'=>'required',
         ]);
 
         $setting_data = $request->except('_token');

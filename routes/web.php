@@ -157,6 +157,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
 
 //setting routes
     Route::resource('setting','SettingController');
+    Route::post('setting/add','SettingController@add')->name('setting.add');
 });
 
 Auth::routes(['register' => false]);
