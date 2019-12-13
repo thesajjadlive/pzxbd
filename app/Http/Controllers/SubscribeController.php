@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ContactUs;
+use App\Setting;
 use App\Subscribe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -28,7 +29,11 @@ class SubscribeController extends Controller
             'email' => 'required|email',
             'message' => 'required',
         ]);
-        Mail::to('test@test.com')->send(new ContactUs($data));
+
+        $setting = Setting::orderBy('id','desc')->first();
+        $email =$setting->email_2;
+
+        Mail::to($email)->send(new ContactUs($data));
         session()->flash('message','Thank you for your message.');
         return redirect()->back();
     }
