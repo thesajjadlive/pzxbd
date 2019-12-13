@@ -33,12 +33,12 @@ class AppServiceProvider extends ServiceProvider
         view()->composer(['layouts/front/_header','layouts/front/_mobileMenu'], function ($view){
             $view->with('categories',Category::orderBy('name','ASC')->pluck('name','id'));
             $view->with('brands',Brand::orderBy('name','ASC')->pluck('name','id'));
-            $view->with('settings',Setting::orderBy('id','desc')->get());
+            $view->with('setting',Setting::orderBy('id','desc')->first());
         });
 
 
         view()->composer(['frontend/about','frontend/contact','layouts/front/_footer','layouts/front/_head'], function ($view){
-            $view->with('settings',Setting::orderBy('id','desc')->get());
+            $view->with('setting',Setting::orderBy('id','desc')->first());
         });
 
 

@@ -21,9 +21,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h2 class="subtitle">OUR HISTORY</h2>
-                        @foreach($settings as $setting)
                         <p class="text-justify">{{ $setting->history }}</p>
-                        @endforeach
                     </div><!-- End .col-lg-7 -->
 
                 </div><!-- End .row -->
@@ -40,13 +38,10 @@
 
                     <div class="col-lg-6 padding-left-lg">
                         <h3 class="subtitle">OUR MISSION</h3>
-                        @foreach($settings as $setting)
-                            <p class="text-justify">{{ $setting->mission }}</p>
-                        @endforeach
+                        <p class="text-justify">{{ $setting->mission }}</p>
+
                         <h3 class="subtitle">OUR VISION</h3>
-                        @foreach($settings as $setting)
-                            <p class="text-justify">{{ $setting->vision }}</p>
-                        @endforeach
+                        <p class="text-justify">{{ $setting->vision }}</p>
                     </div><!-- End .col-lg-6 -->
                 </div><!-- End .row -->
             </div><!-- End .container -->

@@ -2,7 +2,7 @@
     <span class="mobile-menu-close"><i class="icon-cancel"></i></span>
     <nav class="mobile-nav">
         <ul class="mobile-menu">
-            <li class="active"><a href="index-2.html">Home</a></li>
+            <li class="active"><a href="{{ route('home') }}">Home</a></li>
             <li>
                 <a href="{{ route('front.product.index') }}">Categories</a>
                 <ul>
@@ -38,10 +38,8 @@
     </nav><!-- End .mobile-nav -->
 
     <div class="social-icons">
-        @foreach($settings as $setting)
             <a href="https://{{ $setting->facebook }}" class="social-icon" target="_blank"><i class="icon-facebook"></i></a>
             <a href="https://{{ $setting->twitter }}" class="social-icon" target="_blank"><i class="icon-twitter"></i></a>
             <a href="https://{{$setting->linkedin}}" class="social-icon" target="_blank"><i class="icon-linkedin"></i></a>
-        @endforeach
     </div><!-- End .social-icons -->
 </div><!-- End .mobile-menu-wrapper -->
