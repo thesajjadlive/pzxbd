@@ -29,6 +29,8 @@ class CreateSettingsTable extends Migration
             $table->text('history');
             $table->text('mission');
             $table->text('vision');
+            $table->integer('shipping');
+            $table->integer('free_shipping');
             $table->timestamps();
         });
     }

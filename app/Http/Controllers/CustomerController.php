@@ -7,6 +7,7 @@ use App\Mail\OrderPlaceMail;
 use App\Order;
 use App\OrderDetail;
 use App\Product;
+use App\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -107,6 +108,12 @@ class CustomerController extends Controller
              //order details store
              $cart = session('cart');
              $total = 0;
+             $sub_total = 0;
+
+             $setting = Setting::orderBy('id','desc')->first();
+             $shipping = $setting->shipping;
+             $free_shipping = $setting->free_shipping;
+
              if (count($cart)) {
                  foreach ($cart as $item) {
                      $product = Product::findOrFail($item['product_id']);
@@ -116,11 +123,12 @@ class CustomerController extends Controller
                      $ordre_details['product_name'] = $item['name'];
                      $ordre_details['price'] = $item['price'];
                      $ordre_details['quantity'] = $item['quantity'];
-                     $ordre_details['shipping'] = $item['quantity'] * 30;
+                     $ordre_details['shipping'] = $item['quantity'] * $shipping;
                      $ordre_details['total'] = $item['quantity'] * $item['price'];
 
                      OrderDetail::create($ordre_details);
 
+                     $sub_total += $ordre_details['total'];
                      $total += $ordre_details['total']+$ordre_details['shipping'];
 
                      //product stock update
@@ -134,7 +142,13 @@ class CustomerController extends Controller
                  }
              }
 
-             Order::findOrFail($order_id)->update(['total_price' => $total]);
+             if ($sub_total>= $free_shipping){
+
+                 Order::findOrFail($order_id)->update(['total_price' => $sub_total]);
+             }
+             else{
+                Order::findOrFail($order_id)->update(['total_price' => $total]);
+             }
 
         //Transaction end
             DB::commit();

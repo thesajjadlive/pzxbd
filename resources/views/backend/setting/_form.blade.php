@@ -108,6 +108,29 @@
             @error('title')
             <div class="pl-1 text-danger">{{ $message }}</div>
             @enderror
+
+
+        </div>
+
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="size">Shipping Charge :</label>
+                <input name="shipping" type="number" value="{{ old('shipping',isset($setting)?$setting->shipping:null) }}"  class="form-control form-control-line @error('shipping') is-invalid @enderror" id="shipping">
+            </div>
+            @error('shipping')
+            <div class="pl-1 text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="color">Free Shipping On(Ammount) :</label>
+                <input name="free_shipping" type="number" value="{{ old('free_shipping',isset($setting)?$setting->free_shipping:null) }}"  class="form-control form-control-line @error('free_shipping') is-invalid @enderror" id="free_shipping">
+            </div>
+            @error('free_shipping')
+            <div class="pl-1 text-danger">{{ $message }}</div>
+            @enderror
         </div>
 
 

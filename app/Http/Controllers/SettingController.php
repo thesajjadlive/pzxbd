@@ -60,6 +60,8 @@ class SettingController extends Controller
             'history'=>'required',
             'mission'=>'required',
             'vision'=>'required',
+            'shipping'=>'required|integer',
+            'free_shipping'=>'required|integer',
         ]);
 
         $setting = $request->except('_token');
@@ -117,6 +119,8 @@ class SettingController extends Controller
             'history'=>'required',
             'mission'=>'required',
             'vision'=>'required',
+            'shipping'=>'required|integer',
+            'free_shipping'=>'required|integer',
         ]);
 
         $setting_data = $request->except('_token');

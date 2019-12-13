@@ -42,5 +42,10 @@ class AppServiceProvider extends ServiceProvider
         });
 
 
+        view()->composer(['frontend/cart','frontend/checkout/index','backend/setting/index'], function ($view){
+            $view->with('setting',Setting::orderBy('id','desc')->first());
+        });
+
+
     }
 }

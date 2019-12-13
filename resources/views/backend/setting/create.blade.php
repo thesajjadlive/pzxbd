@@ -5,8 +5,8 @@
   <div class="card o-hidden border-0 shadow-lg my-5">
       <div class="card-body p-0">
   <div class="row">
-      <div class="col-lg-2"></div>
-        <div class="col-lg-8">
+      <div class="col-lg-1"></div>
+        <div class="col-lg-10">
 
             <div class="box box-default">
                 <div class="box-body wizard-content">

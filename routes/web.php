@@ -95,7 +95,7 @@ Route::post('pass/reset', 'Customer\ResetPasswordController@reset')->name('user.
 //special offer route
 Route::get('offer', 'CampaignController@offer')->name('offer');
 
-
+//discount route
 Route::get('discount/{id}', 'CouponController@discount')->name('discount');
 
 

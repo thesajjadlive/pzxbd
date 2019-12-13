@@ -21,5 +21,7 @@ class Setting extends Model
         'history',
         'mission',
         'vision',
+        'shipping',
+        'free_shipping',
         ];
 }

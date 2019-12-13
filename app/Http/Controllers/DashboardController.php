@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\Setting;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -23,6 +24,8 @@ class DashboardController extends Controller
     public function test()
     {
         $data['title'] = 'Test';
-        return User::all();
+        $setting = Setting::orderBy('id','desc')->first();
+
+        return $setting = $setting->shipping;
     }
 }

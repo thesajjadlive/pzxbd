@@ -7,7 +7,7 @@
 
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                @if($settings->isEmpty())
+                @if($setting==null)
                     <form action="{{ route('setting.add') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <button type="submit" class="btn btn-outline-dark float-left">Add Information</button>
@@ -20,18 +20,25 @@
             </div>
             <div class="col-md-12">
                 <div class="card">
-                            @foreach($settings as $setting)
                     <div class="card-header">Setting Information <span class="float-right"><a href="{{ route('setting.edit',$setting->id) }}" class="btn btn-primary card-edit">Edit</a></span></div>
-                    <div class="card-body">
+                    <div class="card-body col-md-12">
                         <table class="table table-borderless">
                             <tbody>
                             <tr>
-                                <th>Site Title</th>
+                                <th width="30%">Site Title</th>
                                 <td>{{ $setting->title }}</td>
                             </tr>
                             <tr>
                                 <th>Address</th>
                                 <td>{{ $setting->address }}</td>
+                            </tr>
+                            <tr>
+                                <th>Shipping Charge</th>
+                                <td>{{ $setting->shipping }}</td>
+                            </tr>
+                            <tr>
+                                <th>Free Shipping On(Ammount)</th>
+                                <td>{{ $setting->free_shipping }}</td>
                             </tr>
                             <tr>
                                 <th>Phone</th>
@@ -84,7 +91,7 @@
                             </tbody>
                         </table>
                     </div>
-                            @endforeach
+
                 </div>
             </div>
         </div>
