@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Campaign;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class CampaignController extends Controller
 {
@@ -121,16 +122,17 @@ class CampaignController extends Controller
             'details'=>'required',
             'date'=>'required'
         ]);
-        $campaign_data= $request->except('_token','_method');
+        $data= $request->except('_token','method');
         //file upload
         if ($request->hasFile('file_path')){
             $file = $request->file('file_path');
-            $file->move(public_path('images/campaigns/'),$file->getClientOriginalName());
-            File::delete($campaign->file_path);
-            $campaign_data['file_path'] = 'images/campaigns/'.$file->getClientOriginalName();
+            $file_name = time().'SS'.rand(0000,9999).$file->getClientOriginalName();
+            $file->move(public_path('images/campaigns/'), $file_name);
+            unlink(public_path($campaign->file_path));
+            $data['file_path'] = 'images/campaigns/'.$file_name;
         }
 
-        $campaign->update($campaign_data);
+        $campaign->update($data);
         session()->flash('message','Campaign Updated Successfully!');
         return redirect()->route('campaign.index');
     }
@@ -158,6 +160,7 @@ class CampaignController extends Controller
     public function delete($id)
     {
         $campaign = Campaign::onlyTrashed()->findOrFail($id);
+        unlink(public_path($campaign->file_path));
         $campaign->forceDelete();
         session()->flash('message','Camapaign Permanently Removed!');
         return redirect()->route('campaign.index');
