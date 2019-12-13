@@ -78,14 +78,13 @@
             <i class="fas fa-user-shield"></i>
             <span>Admins</span></a>
     </li>
-    @endif
 
-    {{--<li class="nav-item">
-        <a class="nav-link" href="{{route('category.index')}}">
-            <i class="fa fa-sliders"></i>
-            <span>Slider</span></a>
-    </li>--}}
-    @if(auth()->user()->type != 'operator')
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('subscribers')}}">
+            <i class="fas fa-bell"></i>
+            <span>Subscribers</span></a>
+    </li>
+
     <li class="nav-item">
         <a class="nav-link" href="{{route('setting.index')}}">
             <i class="fa fa-cog"></i>

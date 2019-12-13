@@ -10,6 +10,36 @@ use Illuminate\Support\Facades\Mail;
 
 class SubscribeController extends Controller
 {
+    public function index(Request $request)
+    {
+
+        $data['title'] = 'Subscribers List';
+
+        $subscriber = new Subscribe();
+
+        //search
+        if ($request->has('search') && $request->search != null){
+            $subscriber = $subscriber->where('email','like','%'.$request->search.'%');
+        }
+
+
+        $subscriber = $subscriber->orderBy('id','DESC')->paginate(10);
+
+        //next pages search issue resolved (this must be after paginate)
+        if (isset($request->search)) {
+            $render['search'] = $request->search;
+            $subscriber = $subscriber->appends($render);
+        }
+
+
+        $data['subscribers'] =$subscriber;
+        $data['serial'] = managePagination($subscriber);
+
+        return view('backend.subscribers', $data);
+    }
+
+
+
     public function store(Request $request)
     {
         session()->flash('message','Thank you for your subscription.');

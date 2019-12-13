@@ -30,6 +30,8 @@ Route::get('product/{id}','Front\ProductController@details')->name('product.deta
 Route::get('products/{id?}','Front\ProductController@index')->name('front.product.index');
 Route::get('brand/{id?}','Front\ProductController@brand')->name('front.product.brand');
 Route::get('search','Front\ProductController@find')->name('front.product.find');
+
+//subscribe route
 Route::post('subscribe','SubscribeController@store')->name('subscribe');
 
 
@@ -158,6 +160,9 @@ Route::middleware('auth')->prefix('admin')->group(function (){
 //setting routes
     Route::resource('setting','SettingController');
     Route::post('setting/add','SettingController@add')->name('setting.add');
+
+//subscribers view route
+    Route::get('subscribers','SubscribeController@index')->name('subscribers');
 });
 
 Auth::routes(['register' => false]);
