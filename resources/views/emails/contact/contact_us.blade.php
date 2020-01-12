@@ -1,5 +1,5 @@
 @component('mail::message')
-    # Thank you for your message
+    # Visitor feedback/suggestion message
 
     Name: {{ $data['name'] }}
     Email: {{ $data['email'] }}
@@ -10,4 +10,7 @@
 
     From
     {{ config('app.name') }}
+
+
+    *This is an automated email, please don't reply.
 @endcomponent
