@@ -29,6 +29,6 @@ class OrderPlaceMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.orders.order_confirmation');
+        return $this->from('contact@pzxbd.com')->markdown('emails.orders.order_confirmation');
     }
 }

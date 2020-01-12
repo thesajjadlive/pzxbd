@@ -30,6 +30,7 @@ class ContactUs extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.contact.contact_us');
+        return $this
+            ->markdown('emails.contact.contact_us');
     }
 }
