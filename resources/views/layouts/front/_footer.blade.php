@@ -45,7 +45,6 @@
             <div class="col-lg-4 col-md-6">
                 <div class="widget">
                     <ul class="contact-info">
-                        @foreach($settings as $setting)
                         <li>
                             <span class="contact-info-label">Address:</span>{{ $setting->address }}
                         </li>
@@ -59,7 +58,6 @@
                             <span class="contact-info-label">Working Days/Hours:</span>
                             Sat - Thu / 10:00AM - 8:00PM
                         </li>
-                        @endforeach
                     </ul>
                 </div><!-- End .widget -->
             </div><!-- End .col-lg-4 -->
@@ -74,11 +72,9 @@
 
 
         <div class="social-icons">
-            @foreach($settings as $setting)
             <a href="https://{{ $setting->facebook }}" class="social-icon" target="_blank"><i class="icon-facebook"></i></a>
             <a href="https://{{ $setting->twitter }}" class="social-icon" target="_blank"><i class="icon-twitter"></i></a>
             <a href="https://{{$setting->linkedin}}" class="social-icon" target="_blank"><i class="icon-linkedin"></i></a>
-            @endforeach
         </div><!-- End .social-icons -->
     </div><!-- End .footer-bottom -->
     <p class="footer-copyright" style="color: #1b1e21">Developed by Sajjad Hossain</p>

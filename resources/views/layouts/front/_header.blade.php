@@ -14,7 +14,7 @@
                         @if(Auth::guard('customer')->user())
                             <li><a href="{{ route('user.logout') }}">SIGN OUT</a></li>
                         @else
-                            <li><a href="{{ route('user.register') }}">SIGN UP</a></li>
+                            <li><a href="{{ route('user.register') }}">REGISTER</a></li>
                             <li><a href="{{ route('user.login') }}">SIGN IN</a></li>
                         @endif
                     </ul>
@@ -60,9 +60,7 @@
             </button>
             <div class="header-contact">
                 <span>Call us now</span>
-                @foreach ($settings as $setting)
                 <a href="tel:{{$setting->phone_1}}"><strong>{{ $setting->phone_1 }}</strong></a>
-                @endforeach
             </div><!-- End .header-contact -->
 
             <div class="dropdown cart-dropdown">

@@ -49,7 +49,6 @@
 
                 <div class="col-md-4">
                     <h2 class="light-title">Contact <strong>Details</strong></h2>
-                    @foreach($settings as $setting)
                     <div class="contact-info">
                         <div>
                             <i class="icon-phone"></i>
@@ -68,7 +67,6 @@
                             <p><a href="skype:{{ $setting->skype_2 }}?call">{{ $setting->skype_2 }}</a> </p>
                         </div>
                     </div><!-- End .contact-info -->
-                    @endforeach
                 </div><!-- End .col-md-4 -->
             </div><!-- End .row -->
         </div><!-- End .container -->

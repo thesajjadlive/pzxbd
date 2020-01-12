@@ -121,7 +121,7 @@
                                     @php
 
                                         $total += $item['quantity'] * $item['price'] ;
-                                        $shipping += $item['quantity'] * 30 ;
+                                        $shipping += $item['quantity'] * $setting->shipping ;
                                     @endphp
 
                                 @endforeach
@@ -129,11 +129,11 @@
 
 
                             <!-- Shipping Condition -->
-                           {{-- @php
-                             if ($total >= 3000){
+                            @php
+                             if ($total >= $setting->free_shipping){
                                     $shipping = 0;
                                 }
-                            @endphp--}}
+                            @endphp
                             <!-- Shipping Condition -->
 
                             <tr>

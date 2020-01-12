@@ -75,7 +75,7 @@
                                </tr>
 
                                @php
-                                   $shipping += $item['quantity'] * 30 ;
+                                   $shipping += $item['quantity'] * $setting->shipping ;
                                    $total += $item['quantity'] * $item['price'] ;
                                @endphp
                            @endforeach
@@ -100,17 +100,27 @@
                 </div><!-- End .cart-table-container -->
 
                 <div class="cart-discount">
-                    <h4>Apply Discount Code</h4>
-                    <form action="#">
+                    <h5 class="text-danger">* Discount Code can be applied after placing an order</h5>
+                    {{--<form action="#">
                         <div class="input-group">
                             <input type="text" class="form-control form-control-sm" placeholder="Enter discount code"  required>
                             <div class="input-group-append">
                                 <button class="btn btn-sm btn-primary" type="submit">Apply Discount</button>
                             </div>
                         </div><!-- End .input-group -->
-                    </form>
-                </div><!-- End .cart-discount -->
+                    </form>--}}
+                </div>
+                <!-- End .cart-discount -->
             </div><!-- End .col-lg-8 -->
+
+
+            <!-- Shipping Condition -->
+        @php
+            if ($total >= $setting->free_shipping){
+                   $shipping = 0;
+               }
+        @endphp
+        <!-- Shipping Condition -->
 
             <div class="col-lg-4">
                 <div class="cart-summary">

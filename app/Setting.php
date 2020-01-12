@@ -17,5 +17,11 @@ class Setting extends Model
         'facebook',
         'twitter',
         'linkedin',
+        'title',
+        'history',
+        'mission',
+        'vision',
+        'shipping',
+        'free_shipping',
         ];
 }

@@ -30,19 +30,22 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191); //NEW: Increase StringLength
 
-        view()->composer('layouts/front/_header', function ($view){
+        view()->composer(['layouts/front/_header','layouts/front/_mobileMenu'], function ($view){
             $view->with('categories',Category::orderBy('name','ASC')->pluck('name','id'));
             $view->with('brands',Brand::orderBy('name','ASC')->pluck('name','id'));
-            $view->with('settings',Setting::orderBy('id','desc')->get());
+            $view->with('setting',Setting::orderBy('id','desc')->first());
         });
 
-        view()->composer('layouts/front/_footer', function ($view){
-            $view->with('settings',Setting::orderBy('id','desc')->get());
+
+        view()->composer(['frontend/about','frontend/contact','layouts/front/_footer','layouts/front/_head'], function ($view){
+            $view->with('setting',Setting::orderBy('id','desc')->first());
         });
 
-        view()->composer('frontend/contact', function ($view){
-            $view->with('settings',Setting::orderBy('id','desc')->get());
+
+        view()->composer(['frontend/cart','frontend/checkout/index','backend/setting/index'], function ($view){
+            $view->with('setting',Setting::orderBy('id','desc')->first());
         });
+
 
     }
 }

@@ -206,6 +206,7 @@ class ProductController extends Controller
     public function delete($id)
     {
         $product = Product::onlyTrashed()->findOrFail($id);
+        $product->product_image()->delete();
         $product->forceDelete();
         session()->flash('message','Product Removed Permanently');
         return redirect()->route('product.index');
@@ -214,7 +215,7 @@ class ProductController extends Controller
     public function delete_image($image_id)
     {
         $image = ProductImage::findOrFail($image_id);
-        File::delete($image->file_path);
+        unlink(public_path($image->file_path));
         $image->delete();
         session()->flash('message','Product image has been deleted.');
         return redirect()->back();

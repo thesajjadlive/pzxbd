@@ -25,6 +25,12 @@ class CreateSettingsTable extends Migration
             $table->string('facebook');
             $table->string('twitter');
             $table->string('linkedin');
+            $table->string('title');
+            $table->text('history');
+            $table->text('mission');
+            $table->text('vision');
+            $table->integer('shipping');
+            $table->integer('free_shipping');
             $table->timestamps();
         });
     }
