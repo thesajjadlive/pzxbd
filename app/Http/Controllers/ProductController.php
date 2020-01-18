@@ -95,7 +95,7 @@ class ProductController extends Controller
             {
                 $product_image['product_id'] = $product->id;
                 $file_name = $product->id.'-'.time().'-'.rand(0000,9999).'.'.$image->getClientoriginalExtension();
-                $image->move('images/products/',$file_name);
+                $image->move(public_path('images/products/'),$file_name);
                 $product_image['file_path'] = 'images/products/'.$file_name;
                 ProductImage::create($product_image);
             }
@@ -171,7 +171,7 @@ class ProductController extends Controller
             {
                 $product_image['product_id'] = $product->id;
                 $file_name = $product->id.'-'.time().'-'.rand(0000,9999).'.'.$image->getClientoriginalExtension();
-                $image->move('images/products/',$file_name);
+                $image->move(public_path('images/products/'),$file_name);
                 $product_image['file_path'] = 'images/products/'.$file_name;
                 ProductImage::create($product_image);
             }
