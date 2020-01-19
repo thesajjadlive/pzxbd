@@ -67,7 +67,7 @@
 
 <div class="container">
     <div class="footer-bottom">
-        <p class="footer-copyright">Pzxbd.com &copy;  2019.  All Rights Reserved</p>
+        <p class="footer-copyright">Pzxbd.com &copy;  {{ date('Y') }}.  All Rights Reserved</p>
         <img src="{{ asset('assets/frontend/images/payment.png') }}" alt="payment methods" class="footer-payments">
 
 
