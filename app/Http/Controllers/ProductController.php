@@ -82,7 +82,7 @@ class ProductController extends Controller
             'price'=>'required|numeric',
             'stock'=>'required|numeric',
             'status'=>'required',
-            'images.*'=>'required|image'
+            'images.*'=>'required|image|max:300'
         ]);
         //Product create
         $product = $request->except('_token','images.*');
@@ -153,10 +153,11 @@ class ProductController extends Controller
             'description'=>'nullable',
             'price'=>'required|numeric',
             'stock'=>'required|numeric',
-            'status'=>'required'
+            'status'=>'required',
+            'images.*'=>'image|max:300'
         ]);
 
-        $product_data = $request->except('_token');
+        $product_data = $request->except('_token','images.*');
         if(!$request->has('is_featured'))
         {
             $product_data['is_featured'] = 0;

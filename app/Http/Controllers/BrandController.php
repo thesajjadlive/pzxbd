@@ -69,13 +69,14 @@ class BrandController extends Controller
     {
         $request->validate([
             'name'=>'required',
-            'status'=>'required'
+            'status'=>'required',
+            'logo'=>'required|image|max:300'
         ]);
-        $brand = $request->except('_token');
+        $brand = $request->except('_token','logo');
 
         if($request->hasFile('logo')){
             $file = $request->file('logo');
-            $file->move('images/brands',$file->getClientOriginalName());
+            $file->move(public_path('images/brands'),$file->getClientOriginalName());
             $brand['logo'] = 'images/brands/'.$file->getClientOriginalName();
         }
 
@@ -120,13 +121,14 @@ class BrandController extends Controller
     {
         $request->validate([
             'name'=>'required',
-            'status'=>'required'
+            'status'=>'required',
+            'logo'=>'image|max:300'
         ]);
         $brand_data = $request->except('_token','_method','logo');
 
         if($request->hasFile('logo')){
             $file = $request->file('logo');
-            $file->move('images/brands/',$file->getClientOriginalName());
+            $file->move(public_path('images/brands'),$file->getClientOriginalName());
             if($brand->logo != null)
             {
                 File::delete($brand->logo);

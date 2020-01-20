@@ -36,6 +36,9 @@
 
     <div class="form-group">
         <label for="logo">Logo :</label>
+        @if (isset($brand))
+            <img style="max-width: 70px" src="{{asset($brand->logo)}}" alt="">
+        @endif
         <input required class="form-control" name="logo" type="file" id="logo">
     </div>
     @error('logo')
