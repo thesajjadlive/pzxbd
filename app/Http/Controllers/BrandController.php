@@ -131,7 +131,7 @@ class BrandController extends Controller
             $file->move(public_path('images/brands'),$file->getClientOriginalName());
             if($brand->logo != null)
             {
-                File::delete($brand->logo);
+                unlink(public_path($brand->logo));
             }
             $brand_data['logo'] = 'images/brands/'.$file->getClientOriginalName();
         }

@@ -5,7 +5,7 @@
 <title>{{ $setting->title }}</title>
 
 <meta name="keywords" content="HTML5 Template" />
-<meta name="description" content="Porto - Bootstrap eCommerce Template">
+<meta name="description" content="PzxBd - eCommerce">
 <meta name="author" content="SW-THEMES">
 
 <!-- Favicon -->
